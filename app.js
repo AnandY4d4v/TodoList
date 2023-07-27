@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const app =express();
 const mongoose=require("mongoose");
 const _ = require("lodash");
-const dotenv = require("dotenv");
 //mongoose.connect("mongodb://127.0.0.1:27017/todoListDB");
 mongoose.connect("mongodb+srv://felixfelix:Felix%40453@cluster0.4oc4hbc.mongodb.net/todolistDB");
 
@@ -11,9 +10,6 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-dotenv.config({
-  path:"./data/config.env",
-});
 
 let workItems=[];
 const db = mongoose.connection;
@@ -156,6 +152,6 @@ app.post("/delete", async function(req, res) {
   
 });
 
-app.listen(process.env.PORT,function(){
-    console.log("App is running on port"+process.env.PORT );
+app.listen(3000,function(){
+    console.log("App is running on port" );
 });
