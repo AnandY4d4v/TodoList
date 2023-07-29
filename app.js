@@ -1,21 +1,19 @@
-import express from "express";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
-import _ from "lodash";
-import dotenv from "dotenv";
+const express = require ("express");
+const bodyParser = require ("body-parser");
+const mongoose = require("mongoose");
+const _ = require("lodash");
+const ejs = require("ejs");
+require('dotenv').config();
 const app = express();
 
 
 //mongoose.connect("mongodb://127.0.0.1:27017/todoListDB");
-mongoose.connect("mongodb+srv://felixfelix:Felix%40453@cluster0.4oc4hbc.mongodb.net/todolistDB");
+mongoose.connect(process.env.MONGO);
 
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-dotenv.config({
-  path:"./data/config.env",
-});
 
 
 let workItems=[];
